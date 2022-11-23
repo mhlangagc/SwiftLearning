@@ -12,6 +12,9 @@ class HomeViewController: UIViewController {
         button.addTarget(HomeViewController.self, action: #selector(changeLabelToCodingIsFun), for: .touchUpInside)
         return button
     }()
+    
+    
+    /// Random comment
        
     @objc func changeLabelToCodingIsFun() {
         codingIsFunLabel.text = "Coding is Fun."
