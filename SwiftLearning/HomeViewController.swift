@@ -9,21 +9,14 @@ class HomeViewController: UIViewController {
         button.backgroundColor = .red
         button.layer.cornerRadius = 25
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(HomeViewController.self, action: #selector(changeLabelToCodingIsFun), for: .touchUpInside)
+        button.addTarget(self, action: #selector(changeLabelToCodingIsFun), for: .touchUpInside)
         return button
     }()
     
-    
-    /// Random comment
-       
-    @objc func changeLabelToCodingIsFun() {
-        codingIsFunLabel.text = "Coding is Fun."
-    }
-    
     lazy var codingIsFunLabel : UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.backgroundColor = .systemGreen
+        label.textColor = .black
+        // label.backgroundColor = .systemGreen
         label.text = "I am a label"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
@@ -40,13 +33,34 @@ class HomeViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+    /// How to create a button with an image
+    lazy var changeProfilePictureButton: UIButton = {
+        let button = UIButton()
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 2.0 // thickness of the boarder
+        button.layer.cornerRadius = 25
+        button.setImage(UIImage(named: "ic_change_profile_picture"), for: UIControl.State.normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
+        setupUI()
+        fetchImageFrmoIntert()
+    }
+    
+    func fetchImageFrmoIntert() {
         
+    }
+    
+    func setupUI() {
         view.addSubview(profilePictureImageView)
         view.addSubview(codingIsFunLabel)
         view.addSubview(tapMeButton)
+        view.addSubview(changeProfilePictureButton)
         
         profilePictureImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         profilePictureImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -65,7 +79,15 @@ class HomeViewController: UIViewController {
                                             constant: -50).isActive = true // safeAreaLayoutGuide //
         tapMeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         tapMeButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-    
         
+        changeProfilePictureButton.centerXAnchor.constraint(equalTo: profilePictureImageView.rightAnchor, constant: -20).isActive = true
+        changeProfilePictureButton.centerYAnchor.constraint(equalTo: profilePictureImageView.bottomAnchor,
+                                                           constant: -15).isActive = true
+        changeProfilePictureButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        changeProfilePictureButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    @objc func changeLabelToCodingIsFun() {
+        codingIsFunLabel.text = "Coding is Fun."
     }
 }
