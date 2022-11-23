@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
         button.frame = CGRect(x: 100, y: 400, width: 200, height: 50)
         button.layer.cornerRadius = 25
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self , action: #selector(showInLabel), for: .touchUpInside)
+        button.addTarget(HomeViewController.self, action: #selector(showInLabel), for: .touchUpInside)
         return button
     }()
         
