@@ -2,48 +2,66 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    let aButton : UIButton = {
+    lazy var tapMeButton: UIButton = {
         let button = UIButton()
-
         button.setTitle("Tap Me", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .red
-        button.frame = CGRect(x: 100, y: 400, width: 200, height: 50)
         button.layer.cornerRadius = 25
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(HomeViewController.self, action: #selector(showInLabel), for: .touchUpInside)
+        button.addTarget(HomeViewController.self, action: #selector(changeLabelToCodingIsFun), for: .touchUpInside)
         return button
     }()
-        
-    @objc func showInLabel() {
-        aLabel.text = "Coding is Fun."
+       
+    @objc func changeLabelToCodingIsFun() {
+        codingIsFunLabel.text = "Coding is Fun."
     }
     
-    let aLabel : UILabel = {
+    lazy var codingIsFunLabel : UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.backgroundColor = .systemGreen
-        label.frame = CGRect(x: 100, y: 400, width: 200, height: 50)
+        label.text = "I am a label"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    lazy var profilePictureImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "african_woman")
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 75.0
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(aButton)
-        view.addSubview(aLabel)
+        view.addSubview(profilePictureImageView)
+        view.addSubview(codingIsFunLabel)
+        view.addSubview(tapMeButton)
         
-        aButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        aButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        aButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        aButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        aButton.topAnchor.constraint(equalTo: aLabel.bottomAnchor, constant: 10).isActive = true
+        profilePictureImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        profilePictureImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profilePictureImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        profilePictureImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         
-        aLabel.centerXAnchor.constraint(equalTo: aButton.centerXAnchor).isActive = true
-        aLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        aLabel.widthAnchor.constraint(equalTo: aButton.widthAnchor).isActive = true
+        codingIsFunLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor,
+                                                  constant: 0).isActive = true
+        codingIsFunLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        codingIsFunLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        codingIsFunLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
+        codingIsFunLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+        
+        tapMeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        tapMeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                                            constant: -50).isActive = true // safeAreaLayoutGuide //
+        tapMeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        tapMeButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+    
     }
 }
