@@ -49,10 +49,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         setupUI()
-        fetchImageFrmoIntert()
+        fetchProfilePicture()
     }
     
-    func fetchImageFrmoIntert() {
+    func fetchProfilePicture() {
         
     }
     
