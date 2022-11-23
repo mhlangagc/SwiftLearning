@@ -15,10 +15,10 @@ class HomeViewController: UIViewController {
     
     lazy var codingIsFunLabel : UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .white
         // label.backgroundColor = .systemGreen
-        label.text = "I am a label"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.text = "Woman King"
+        label.font = UIFont.boldSystemFont(ofSize: 40)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -44,12 +44,24 @@ class HomeViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    lazy var womanKingUserName: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        // label.backgroundColor = .systemGreen
+        label.text = "@womanking"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        //view.backgroundColor = UIColor.white
         setupUI()
-        fetchProfilePicture()
+        
     }
     
     func fetchProfilePicture() {
@@ -61,15 +73,17 @@ class HomeViewController: UIViewController {
         view.addSubview(codingIsFunLabel)
         view.addSubview(tapMeButton)
         view.addSubview(changeProfilePictureButton)
+        view.addSubview(womanKingUserName)
+        
         
         profilePictureImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         profilePictureImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profilePictureImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         profilePictureImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         
-        codingIsFunLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor,
+        codingIsFunLabel.centerXAnchor.constraint(equalTo: profilePictureImageView.centerXAnchor,
                                                   constant: 0).isActive = true
-        codingIsFunLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        codingIsFunLabel.centerYAnchor.constraint(equalTo: profilePictureImageView.bottomAnchor, constant: 40).isActive = true
         codingIsFunLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         codingIsFunLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
         codingIsFunLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
@@ -85,6 +99,16 @@ class HomeViewController: UIViewController {
                                                            constant: -15).isActive = true
         changeProfilePictureButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         changeProfilePictureButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        womanKingUserName.centerXAnchor.constraint(equalTo: codingIsFunLabel.centerXAnchor,
+                                                  constant: 0).isActive = true
+        womanKingUserName.centerYAnchor.constraint(equalTo: codingIsFunLabel.bottomAnchor, constant: 20).isActive = true
+        womanKingUserName.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        womanKingUserName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
+        womanKingUserName.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+        
+        
+        
     }
     
     @objc func changeLabelToCodingIsFun() {
